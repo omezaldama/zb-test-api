@@ -44,6 +44,7 @@ Swagger documentation will be located in.
 ```
 http://localhost:8000/docs
 ```
+When running the app, it will immediately create (if not created already) an admin user with email admin@example.com and password abc123. You can use this user to login, get a token and authenticate requests.
 
 
 ## Project structure
