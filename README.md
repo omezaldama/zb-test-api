@@ -47,6 +47,23 @@ http://localhost:8000/docs
 When running the app, it will immediately create (if not created already) an admin user with email admin@example.com and password abc123. You can use this user to login, get a token and authenticate requests.
 
 
+## Running tests
+
+First install the test dependencies (within your virtual environment).
+```
+pip install -r test-requirements.txt
+```
+
+To run all tests, from the project root
+```
+pytest
+```
+To run a specific test:
+```
+pytest tests/api/v1/test_products.py::test_get_products
+```
+
+
 ## Project structure
 
 File main.py is the entrypoint of the app.

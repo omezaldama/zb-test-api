@@ -1,6 +1,6 @@
 from typing import List
 
-from fastapi import Depends, APIRouter
+from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
 from controllers.users import UsersController
@@ -12,7 +12,7 @@ from utils.auth import get_request_user, raise_401_exception, raise_403_exceptio
 
 router = APIRouter()
 
-@router.get('/users/', response_model=List[User])
+@router.get('/users', response_model=List[User])
 def get_users(
     skip: int = 0,
     limit: int = 10,
@@ -34,10 +34,13 @@ def get_user(
     if request_user is None:
         raise_401_exception('Please login to use this endpoint')
     if request_user.is_admin():
-        return UsersController.get_user_by_id(db, user_id)
+        user = UsersController.get_user_by_id(db, user_id)
+        if user is None:
+            raise HTTPException(status_code=404, detail='User not found')
+        return user
     raise_403_exception('Only admins can view users')
 
-@router.post('/users/', response_model=User)
+@router.post('/users', response_model=User, status_code=201)
 def create_user(
     user: UserCreate,
     db: Session = Depends(get_db),
@@ -59,7 +62,10 @@ def update_user(
     if request_user is None:
         raise_401_exception('Please login to use this endpoint')
     if request_user.is_admin():
-        return UsersController.update_user(db, user_id, user)
+        updated_user = UsersController.update_user(db, user_id, user)
+        if updated_user is None:
+            raise HTTPException(status_code=404, detail='User not found')
+        return updated_user
     raise_403_exception('Only admins can edit users')
 
 @router.delete('/users/{user_id}', response_model=User)
@@ -71,5 +77,8 @@ def delete_user(
     if request_user is None:
         raise_401_exception('Please login to use this endpoint')
     if request_user.is_admin():
-        return UsersController.delete_user(db, user_id)
+        deleted_user = UsersController.delete_user(db, user_id)
+        if deleted_user is None:
+            raise HTTPException(status_code=404, detail='User not found')
+        return deleted_user
     raise_403_exception('Only admins can delete users')

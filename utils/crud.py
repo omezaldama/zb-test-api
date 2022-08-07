@@ -25,6 +25,8 @@ class CRUDUtils(object):
     @classmethod
     def update_object(cls, db: Session, model: Base, obj_id: int, obj: BaseModel):
         db_object = cls.get_object_by_id(db, model, obj_id)
+        if db_object is None:
+            return None
         for field, value in obj.dict().items():
             if value is not None:
                 setattr(db_object, field, value)
@@ -36,6 +38,8 @@ class CRUDUtils(object):
     @classmethod
     def delete_object(cls, db: Session, model: Base, obj_id: int):
         db_object = cls.get_object_by_id(db, model, obj_id)
+        if db_object is None:
+            return None
         db.delete(db_object)
         db.commit()
         return db_object
