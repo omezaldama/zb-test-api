@@ -44,7 +44,7 @@ Swagger documentation will be located in.
 ```
 http://localhost:8000/docs
 ```
-When running the app, it will immediately create (if not created already) an admin user with email admin@example.com and password abc123. You can use this user to login, get a token and authenticate requests.
+When running the app, it will immediately create (if not created already) an admin user with email admin@example.com and password abc123. You can use this user to login, get a token and authenticate requests. The only endpoints that do not require authentication are the get requests /products and /products/{product_id}, for all other endpoints you are required to provide a token which you can obtain from the login endpoint /login, it is a jwt so it should be included in the authorization header as Authorization: Bearer {token}.
 
 
 ## Running tests
