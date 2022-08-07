@@ -1,9 +1,9 @@
 from fastapi import Depends, APIRouter
 from fastapi.security import OAuth2PasswordRequestForm
 
-from pd_models.tokens import Token
-from dependencies.database import get_db
-from utils.auth import authenticate_user, create_access_token, raise_401_exception
+from app.pd_models.tokens import Token
+from app.dependencies.database import get_db
+from app.utils.auth import authenticate_user, create_access_token, raise_401_exception
 
 
 router = APIRouter()

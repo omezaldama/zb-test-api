@@ -2,3 +2,4 @@ __pycache__
 venv
 sql_app.db
 test_sql_app.db
+.pytest_cache

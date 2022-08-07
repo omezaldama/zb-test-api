@@ -3,12 +3,12 @@ from sqlalchemy.orm import Session
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from utils.database import Base, engine, SessionLocal
-from api.routes import router
-from pd_models.users import UserCreate
-from db_models.users import User
-from controllers.users import UsersController
-from dependencies.database import get_db
+from app.utils.database import Base, engine, SessionLocal
+from app.api.routes import router
+from app.pd_models.users import UserCreate
+from app.db_models.users import User
+from app.controllers.users import UsersController
+from app.dependencies.database import get_db
 
 
 Base.metadata.create_all(bind=engine)

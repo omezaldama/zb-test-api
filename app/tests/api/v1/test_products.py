@@ -1,9 +1,9 @@
 from fastapi.testclient import TestClient
 
-from main import app
-from db_models.products import Product
-from tests.conftest import TestSessionLocal
-from tests.utils import create_and_login_user
+from app.main import app
+from app.db_models.products import Product
+from app.tests.conftest import TestSessionLocal
+from app.tests.utils import create_and_login_user
 
 
 client = TestClient(app)
@@ -68,7 +68,7 @@ def test_create_product(test_db):
     assert response.status_code == 403
 
 def test_update_product(test_db, mocker):
-    mock_notify = mocker.patch('controllers.notifications.NotificationsController.notify')
+    mock_notify = mocker.patch('app.controllers.notifications.NotificationsController.notify')
 
     response = client.put('api/v1/products/1', json={'name': 'test product edit'})
     assert response.status_code == 401

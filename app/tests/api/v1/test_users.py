@@ -1,8 +1,8 @@
 from fastapi.testclient import TestClient
 
-from main import app
-from tests.conftest import TestSessionLocal
-from tests.utils import create_and_login_user, create_test_user
+from app.main import app
+from app.tests.conftest import TestSessionLocal
+from app.tests.utils import create_and_login_user, create_test_user
 
 
 client = TestClient(app)

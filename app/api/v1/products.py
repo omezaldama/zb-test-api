@@ -3,11 +3,11 @@ from typing import List
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
-from controllers.products import ProductsController
-from pd_models.products import Product, ProductCreate, ProductUpdate
-from db_models.users import User as DBUser
-from dependencies.database import get_db
-from utils.auth import get_request_user, raise_401_exception, raise_403_exception
+from app.controllers.products import ProductsController
+from app.pd_models.products import Product, ProductCreate, ProductUpdate
+from app.db_models.users import User as DBUser
+from app.dependencies.database import get_db
+from app.utils.auth import get_request_user, raise_401_exception, raise_403_exception
 
 
 router = APIRouter()

@@ -1,7 +1,7 @@
-from controllers.users import UsersController
-from db_models.users import User
-from pd_models.users import UserCreate
-from tests.conftest import TestSessionLocal
+from app.controllers.users import UsersController
+from app.db_models.users import User
+from app.pd_models.users import UserCreate
+from app.tests.conftest import TestSessionLocal
 
 def create_test_user(db, email: str, password: str, role: str = 'admin'):
     user_data = UserCreate(email=email, password=password, role=role)

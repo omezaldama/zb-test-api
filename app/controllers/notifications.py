@@ -1,6 +1,6 @@
 import requests
 
-from settings import NOTIFICATIONS_SERVICE_URL
+from app.settings import NOTIFICATIONS_SERVICE_URL
 
 class NotificationsController(object):
 

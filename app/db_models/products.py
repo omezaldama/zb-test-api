@@ -1,7 +1,7 @@
 from unicodedata import name
 from sqlalchemy import Column, Integer, String, Float
 
-from utils.database import Base
+from app.utils.database import Base
 
 
 class Product(Base):

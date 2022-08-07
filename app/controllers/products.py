@@ -1,10 +1,10 @@
 from sqlalchemy.orm import Session
 
-from db_models.products import Product
-from pd_models.products import ProductCreate, ProductUpdate, ProductUpdateNotification
-from controllers.users import UsersController
-from controllers.notifications import NotificationsController
-from utils.crud import CRUDUtils
+from app.db_models.products import Product
+from app.pd_models.products import ProductCreate, ProductUpdate, ProductUpdateNotification
+from app.controllers.users import UsersController
+from app.controllers.notifications import NotificationsController
+from app.utils.crud import CRUDUtils
 
 
 class ProductsController(object):

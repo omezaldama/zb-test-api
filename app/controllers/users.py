@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
 
-from db_models.users import User
-from pd_models.users import UserCreate, UserUpdate
-from utils.crud import CRUDUtils
-from utils.auth import hash_password
+from app.db_models.users import User
+from app.pd_models.users import UserCreate, UserUpdate
+from app.utils.crud import CRUDUtils
+from app.utils.auth import hash_password
 
 
 class UsersController(object):

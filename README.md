@@ -30,11 +30,11 @@ pip install -r requirements.txt
 
 Run the server.
 ```
-uvicorn main:app
+uvicorn app.main:app
 ```
 If you want to watch for changes, use the reload flag.
 ```
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 This will run the app on port 8000.
 ```
@@ -60,7 +60,7 @@ pytest
 ```
 To run a specific test:
 ```
-pytest tests/api/v1/test_products.py::test_get_products
+pytest app/tests/api/v1/test_products.py::test_get_products
 ```
 
 

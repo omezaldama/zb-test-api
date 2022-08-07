@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from utils.database import Base
+from app.utils.database import Base
 
 
 class CRUDUtils(object):
